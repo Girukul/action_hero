@@ -1,0 +1,20 @@
+name: Hello World Pipeline
+'on':
+  push:
+    branches:
+      - main
+  workflow_dispatch: null
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: hello_world
+        run: 'echo "### hello world @@@"'
+        shell: bash
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Good Bye
+        run: 'echo "### Good Bye @@@"'
+        shell: bash
