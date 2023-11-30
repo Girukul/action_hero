@@ -1,6 +1,8 @@
 name: Hello World Pipeline
-'on':
+"on":
   push:
+    schedule:
+      - cron: "1 1 * * *"
     branches:
       - main
   workflow_dispatch: null
@@ -12,6 +14,8 @@ jobs:
       - name: hello_world
         run: 'echo "### hello world @@@"'
         shell: bash
+      - name: Generate report
+        run: node report.js
   job2:
     runs-on: ubuntu-latest
     steps:
