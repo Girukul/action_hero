@@ -1,0 +1,24 @@
+name: Hello World Pipeline
+"on":
+  push:
+    schedule:
+      - cron: "1 1 * * *"
+    branches:
+      - main
+  workflow_dispatch: null  # show you tab to 
+jobs:
+  job1:                    # Job name: job1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: hello_world
+        run: 'echo "### hello world @@@"'
+        shell: bash
+      - name: Generate report
+        run: node report.js
+  job2:                   # Job name: job2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Good Bye
+        run: 'echo "### Good Bye @@@"'
+        shell: bash
