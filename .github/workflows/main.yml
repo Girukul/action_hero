@@ -4,10 +4,10 @@ run-name: ${{ github.actor }} is working on pipeline
 "on":
   push:
     paths:
-      - "iac/dev/"
-      - "iac/sit/"
-      - "iac/uat/"
-      - "iac/prod/"      
+      - "iac/dev/**"
+      - "iac/sit/**"
+      - "iac/uat/**"
+      - "iac/prod/**"      
   workflow_dispatch: 
 
   
