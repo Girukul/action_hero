@@ -3,8 +3,11 @@ run-name: ${{ github.actor }} is working on pipeline
 
 "on":
   push:
-    branches:
-      - main
+    paths:
+      - "iac/dev/"
+      - "iac/sit/"
+      - "iac/uat/"
+      - "iac/prod/"      
   workflow_dispatch: 
 
   
@@ -28,8 +31,12 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+    # Initialized Terraform on runner
       - name: Terraform Init 
         run: terraform init
-        
+   
+    # Terraform Plan  
+      - name: Terraform Plan
+        run: terraform plan -chdir={{ github.ref }}
     
 
